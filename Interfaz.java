@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-
+//Hjkads
 public class Interfaz {
 	private JFrame frame;
 	public static void main(String[] args) {

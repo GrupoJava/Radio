@@ -5,13 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-<<<<<<< HEAD
-//RUDY COMO ESTAS?
-=======
 
->>>>>>> origin/master
 public class Interfaz {
 	private JFrame frame;
+	private JButton btnOffon;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,7 +31,7 @@ public class Interfaz {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnOffon = new JButton("Off/On");
+		btnOffon = new JButton("Off/On");
 		btnOffon.setBounds(10, 11, 89, 23);
 		frame.getContentPane().add(btnOffon);
 		
@@ -103,17 +100,25 @@ public class Interfaz {
 		btnSiguiente.setBounds(109, 45, 89, 23);
 		frame.getContentPane().add(btnSiguiente);
 		
-		JButton button = new JButton(">>");
-		button.setBounds(109, 305, 89, 23);
-		frame.getContentPane().add(button);
+		JButton forward = new JButton(">>");
+		forward.setBounds(109, 305, 89, 23);
+		frame.getContentPane().add(forward);
 		
-		JButton button_1 = new JButton("<<");
-		button_1.setBounds(10, 305, 89, 23);
-		frame.getContentPane().add(button_1);
+		JButton backward = new JButton("<<");
+		backward.setBounds(10, 305, 89, 23);
+		frame.getContentPane().add(backward);
 		
-		JLabel lblVolumen = new JLabel("Volumen: 50");
+		JLabel lblVolumen = new JLabel("Volumen: 100");
 		lblVolumen.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblVolumen.setBounds(222, 15, 352, 53);
+		lblVolumen.setBounds(222, 15, 224, 53);
 		frame.getContentPane().add(lblVolumen);
+		
+		JButton btnSubir = new JButton("Subir");
+		btnSubir.setBounds(456, 11, 89, 23);
+		frame.getContentPane().add(btnSubir);
+		
+		JButton btnBajar = new JButton("Bajar");
+		btnBajar.setBounds(456, 38, 89, 23);
+		frame.getContentPane().add(btnBajar);
 	}
 }

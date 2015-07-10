@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 
 public class Interfaz {
 	private JFrame frame;
+	private Radio radio;
 	private JButton btnOffon;
 	private JButton btnAmfm;
 	private JButton btnNewButton;

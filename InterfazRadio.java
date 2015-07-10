@@ -7,20 +7,20 @@ public interface InterfazRadio {
 	final double MIN_FM = 87.9;
 	
 	
-	public void EncenderApagar();
+	public void encenderApagar();
 	
-	public void CambiarFrec();
+	public void cambiarFrec();
 	
-	public void CargarEmisora(double emisora);
+	public void cargarEmisora(double emisora);
 	
-	public void AdelantarEmisora();
+	public void adelantarEmisora();
 	
-	public void AtrasarEmisora();
+	public void atrasarEmisora();
 	
-	public void GuardarEmisora(double emisora, int posicion);
+	public void guardarEmisora(double emisora, int posicion);
 	
-	public void SubirVolumen();
+	public void subirVolumen();
 	
-	public void BajarVolumen();
+	public void bajarVolumen();
 	
 }

@@ -170,9 +170,37 @@ public class Interfaz {
 
 		public void actionPerformed(ActionEvent a) {
 			if(a.getSource()== btnOffon){
+				radio.encenderApagar();
+			}else if(a.getSource() == btnAmfm){
+				radio.cambiarFrec();
+			}else if(a.getSource() == btnNewButton){
+				
+			}else if(a.getSource() == btnNewButton_1){
+				
+			}else if(a.getSource() == btnNewButton_2){
+				
+			}else if(a.getSource() == btnNewButton_3){
+				
+			}else if(a.getSource() == btnNewButton_4){
+				
+			}else if(a.getSource() == btnNewButton_5){
+				
+			}else if(a.getSource() == btnNewButton_6){
+				
+			}else if(a.getSource() == btnNewButton_7){
+				
+			}else if(a.getSource() == btnNewButton_8){
+				
+			}else if(a.getSource() == btnNewButton_9){
+				
+			}else if(a.getSource() == btnNewButton_10){
+				
+			}else if(a.getSource() == btnNewButton_11){
 				
 			}
 		}
+		
+		
 		
 	}
 }

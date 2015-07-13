@@ -13,8 +13,11 @@ public class Radio implements InterfazRadio{
 	}
 	
 	public void encenderApagar(){
-	
-		
+		if(Encendido){
+			Encendido = false;
+		}else{
+			Encendido= true;
+		}
 	}
 	
 	public void cambiarFrec(){
@@ -27,9 +30,9 @@ public class Radio implements InterfazRadio{
 	}
 	
 	public void cargarEmisora(double emisora){
-	
+		
 	}
-	
+
 	public void adelantarEmisora(){
 		//Cambio de emisora AM
 		if (frecuencia == 1){
@@ -78,6 +81,54 @@ public class Radio implements InterfazRadio{
 	
 	public void bajarVolumen(){
 		Volumen = Volumen - 1;
+	}
+
+	public int getFrecuencia() {
+		return frecuencia;
+	}
+
+	public void setFrecuencia(int frecuencia) {
+		this.frecuencia = frecuencia;
+	}
+
+	public double getEmisora() {
+		return emisora;
+	}
+
+	public void setEmisora(double emisora) {
+		this.emisora = emisora;
+	}
+
+	public double[] getEmiAM() {
+		return EmiAM;
+	}
+
+	public void setEmiAM(double[] emiAM) {
+		EmiAM = emiAM;
+	}
+
+	public double[] getEmiFM() {
+		return EmiFM;
+	}
+
+	public void setEmiFM(double[] emiFM) {
+		EmiFM = emiFM;
+	}
+
+	public int getVolumen() {
+		return Volumen;
+	}
+
+	public void setVolumen(int volumen) {
+		Volumen = volumen;
+	}
+
+	public boolean isEncendido() {
+		return Encendido;
+	}
+
+	public void setEncendido(boolean encendido) {
+		Encendido = encendido;
 	}
 	
 }

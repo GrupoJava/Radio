@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JCheckBox;
 
 public class Interfaz {
 	private JFrame frame;
@@ -34,6 +35,9 @@ public class Interfaz {
 	private JButton backward;
 	private JButton btnSubir;
 	private JButton btnBajar;
+	private JCheckBox chckbxGuardarEstacion;
+	private JLabel lblVolumen;
+	private JLabel lblAm;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,7 +56,7 @@ public class Interfaz {
 	}
 	public void initialize(){
 		frame = new JFrame();
-		frame.setBounds(100, 100, 622, 379);
+		frame.setBounds(100, 100, 671, 379);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -66,7 +70,7 @@ public class Interfaz {
 		btnAmfm.addActionListener(new Evento());
 		frame.getContentPane().add(btnAmfm);
 		
-		JLabel lblAm = new JLabel("107.9 FM");
+		lblAm = new JLabel("107.9 FM");
 		lblAm.setFont(new Font("Tahoma", Font.PLAIN, 89));
 		lblAm.setBounds(208, 99, 388, 229);
 		frame.getContentPane().add(lblAm);
@@ -151,7 +155,7 @@ public class Interfaz {
 		backward.addActionListener(new Evento());
 		frame.getContentPane().add(backward);
 		
-		JLabel lblVolumen = new JLabel("Volumen: 100");
+		lblVolumen = new JLabel("Volumen: 100");
 		lblVolumen.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblVolumen.setBounds(222, 15, 224, 53);
 		frame.getContentPane().add(lblVolumen);
@@ -165,6 +169,15 @@ public class Interfaz {
 		btnBajar.setBounds(456, 38, 89, 23);
 		btnBajar.addActionListener(new Evento());
 		frame.getContentPane().add(btnBajar);
+		
+		chckbxGuardarEstacion = new JCheckBox("Guardar Estacion");
+		chckbxGuardarEstacion.setBounds(10, 75, 126, 23);
+		frame.getContentPane().add(chckbxGuardarEstacion);
+		
+		JLabel lblCheckeeEstaOpcion = new JLabel("Checkee esta opcion para guardar la estacion y no cargar la guardada en la posicion");
+		lblCheckeeEstaOpcion.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblCheckeeEstaOpcion.setBounds(144, 79, 449, 14);
+		frame.getContentPane().add(lblCheckeeEstaOpcion);
 	}
 	private class Evento implements ActionListener{
 

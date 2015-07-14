@@ -14,7 +14,7 @@ import javax.swing.JCheckBox;
 
 public class Interfaz {
 	private JFrame frame;
-	private Radio radio;
+	private Radio radio = new Radio();
 	private JButton btnOffon;
 	private JButton btnAmfm;
 	private JButton btnNewButton;
@@ -38,6 +38,7 @@ public class Interfaz {
 	private JCheckBox chckbxGuardarEstacion;
 	private JLabel lblVolumen;
 	private JLabel lblAm;
+	private JLabel lblRadioApagada;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -60,19 +61,19 @@ public class Interfaz {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		btnOffon = new JButton("Off/On");
+		btnOffon = new JButton ("Off/On");
 		btnOffon.setBounds(10, 11, 89, 23);
 		btnOffon.addActionListener(new Evento());
 		frame.getContentPane().add(btnOffon);
 		
-		btnAmfm = new JButton("AM/FM");
-		btnAmfm.setBounds(10, 45, 89, 23);
+		btnAmfm = new JButton ("AM/FM");
+		btnAmfm.setBounds(109, 11, 89, 23);
 		btnAmfm.addActionListener(new Evento());
 		frame.getContentPane().add(btnAmfm);
 		
-		lblAm = new JLabel("107.9 FM");
+		lblAm = new JLabel("Emisora");
 		lblAm.setFont(new Font("Tahoma", Font.PLAIN, 89));
-		lblAm.setBounds(208, 99, 388, 229);
+		lblAm.setBounds(208, 153, 388, 175);
 		frame.getContentPane().add(lblAm);
 		
 		btnNewButton = new JButton("1");
@@ -136,12 +137,12 @@ public class Interfaz {
 		frame.getContentPane().add(btnNewButton_11);
 		
 		btnAnterior = new JButton("Anterior");
-		btnAnterior.setBounds(109, 11, 89, 23);
+		btnAnterior.setBounds(208, 136, 89, 23);
 		btnAnterior.addActionListener(new Evento());
 		frame.getContentPane().add(btnAnterior);
 		
 		btnSiguiente = new JButton("Siguiente");
-		btnSiguiente.setBounds(109, 45, 89, 23);
+		btnSiguiente.setBounds(307, 136, 89, 23);
 		btnSiguiente.addActionListener(new Evento());
 		frame.getContentPane().add(btnSiguiente);
 		
@@ -155,18 +156,18 @@ public class Interfaz {
 		backward.addActionListener(new Evento());
 		frame.getContentPane().add(backward);
 		
-		lblVolumen = new JLabel("Volumen: 100");
+		lblVolumen = new JLabel("Volumen: ---");
 		lblVolumen.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblVolumen.setBounds(222, 15, 224, 53);
+		lblVolumen.setBounds(322, 11, 224, 53);
 		frame.getContentPane().add(lblVolumen);
 		
 		btnSubir = new JButton("Subir");
-		btnSubir.setBounds(456, 11, 89, 23);
+		btnSubir.setBounds(556, 11, 89, 23);
 		btnSubir.addActionListener(new Evento());
 		frame.getContentPane().add(btnSubir);
 		
 		btnBajar = new JButton("Bajar");
-		btnBajar.setBounds(456, 38, 89, 23);
+		btnBajar.setBounds(556, 38, 89, 23);
 		btnBajar.addActionListener(new Evento());
 		frame.getContentPane().add(btnBajar);
 		
@@ -174,16 +175,90 @@ public class Interfaz {
 		chckbxGuardarEstacion.setBounds(10, 75, 126, 23);
 		frame.getContentPane().add(chckbxGuardarEstacion);
 		
-		JLabel lblCheckeeEstaOpcion = new JLabel("Marque esta opcion para guardar la estacion y no cargar la guardada en la posicion");
+		JLabel lblCheckeeEstaOpcion = new JLabel("Checkee esta opcion para guardar la estacion y no cargar la guardada en la posicion");
 		lblCheckeeEstaOpcion.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		lblCheckeeEstaOpcion.setBounds(144, 79, 449, 14);
 		frame.getContentPane().add(lblCheckeeEstaOpcion);
+		
+		lblRadioApagada = new JLabel("Radio Apagada");
+		lblRadioApagada.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblRadioApagada.setBounds(10, 38, 188, 28);
+		frame.getContentPane().add(lblRadioApagada);
+		  btnAmfm.setEnabled(false);
+		  btnNewButton.setEnabled(false);
+		  btnNewButton_1.setEnabled(false);
+		  btnNewButton_2.setEnabled(false);
+		  btnNewButton_3.setEnabled(false);
+		  btnNewButton_4.setEnabled(false);
+		  btnNewButton_5.setEnabled(false);
+		  btnNewButton_6.setEnabled(false);
+		  btnNewButton_7.setEnabled(false);
+		  btnNewButton_8.setEnabled(false);
+		  btnNewButton_9.setEnabled(false);
+		  btnNewButton_10.setEnabled(false);
+		  btnNewButton_11.setEnabled(false);
+		  btnAnterior.setEnabled(false);
+		  btnSiguiente.setEnabled(false);
+		  forward.setEnabled(false);
+		  backward.setEnabled(false);
+		  btnSubir.setEnabled(false);
+		  btnBajar.setEnabled(false);
+		  chckbxGuardarEstacion.setEnabled(false);
 	}
 	private class Evento implements ActionListener{
 
 		public void actionPerformed(ActionEvent a) {
 			if(a.getSource()== btnOffon){
 				radio.encenderApagar();
+				if(!radio.isEncendido()){
+					lblRadioApagada.setText("Radio Agapada");
+					lblAm.setText("Emisora");
+					lblVolumen.setText("Volumen: ---");
+					btnAmfm.setEnabled(false);
+					  btnNewButton.setEnabled(false);
+					  btnNewButton_1.setEnabled(false);
+					  btnNewButton_2.setEnabled(false);
+					  btnNewButton_3.setEnabled(false);
+					  btnNewButton_4.setEnabled(false);
+					  btnNewButton_5.setEnabled(false);
+					  btnNewButton_6.setEnabled(false);
+					  btnNewButton_7.setEnabled(false);
+					  btnNewButton_8.setEnabled(false);
+					  btnNewButton_9.setEnabled(false);
+					  btnNewButton_10.setEnabled(false);
+					  btnNewButton_11.setEnabled(false);
+					  btnAnterior.setEnabled(false);
+					  btnSiguiente.setEnabled(false);
+					  forward.setEnabled(false);
+					  backward.setEnabled(false);
+					  btnSubir.setEnabled(false);
+					  btnBajar.setEnabled(false);
+					  chckbxGuardarEstacion.setEnabled(false);
+				}else{
+					lblRadioApagada.setText("Radio Encendida");
+					lblAm.setText(radio.getEmisora()+"AM");
+					lblVolumen.setText("Volumen: 50");
+					btnAmfm.setEnabled(true);
+					  btnNewButton.setEnabled(true);
+					  btnNewButton_1.setEnabled(true);
+					  btnNewButton_2.setEnabled(true);
+					  btnNewButton_3.setEnabled(true);
+					  btnNewButton_4.setEnabled(true);
+					  btnNewButton_5.setEnabled(true);
+					  btnNewButton_6.setEnabled(true);
+					  btnNewButton_7.setEnabled(true);
+					  btnNewButton_8.setEnabled(true);
+					  btnNewButton_9.setEnabled(true);
+					  btnNewButton_10.setEnabled(true);
+					  btnNewButton_11.setEnabled(true);
+					  btnAnterior.setEnabled(true);
+					  btnSiguiente.setEnabled(true);
+					  forward.setEnabled(true);
+					  backward.setEnabled(true);
+					  btnSubir.setEnabled(true);
+					  btnBajar.setEnabled(true);
+					  chckbxGuardarEstacion.setEnabled(true);
+				}
 			}else if(a.getSource() == btnAmfm){
 				radio.cambiarFrec();
 			}else if(a.getSource() == btnNewButton){

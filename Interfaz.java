@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 import java.awt.Window;
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -7,15 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JCheckBox;
 
 public class Interfaz {
 	private JFrame frame;
 	private String frecuencia = "AM";
 	private Radio radio = new Radio();
+	private int posicionFavorita = 0;
 	private JButton btnOffon;
 	private JButton btnAmfm;
 	private JButton btnNewButton;
@@ -212,6 +216,7 @@ public class Interfaz {
 			if(a.getSource()== btnOffon){
 				radio.encenderApagar();
 				if(!radio.isEncendido()){
+					radio.setVolumen(50);
 					lblRadioApagada.setText("Radio Agapada");
 					lblAm.setText("Emisora");
 					lblVolumen.setText("Volumen: ---");
@@ -236,8 +241,9 @@ public class Interfaz {
 					  btnBajar.setEnabled(false);
 					  chckbxGuardarEstacion.setEnabled(false);
 				}else{
+					radio.setVolumen(50);
 					lblRadioApagada.setText("Radio Encendida");
-					lblAm.setText(radio.getEmisora()+"AM");
+					lblAm.setText((int)radio.getEmisora()+"AM");
 					lblVolumen.setText("Volumen: 50");
 					btnAmfm.setEnabled(true);
 					  btnNewButton.setEnabled(true);
@@ -272,7 +278,8 @@ public class Interfaz {
 					
 				}
 			}else if(a.getSource() == btnNewButton){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=0;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 0);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -280,11 +287,12 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[0]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 			}else if(a.getSource() == btnNewButton_1){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=1;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 1);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -292,12 +300,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[1]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_2){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=2;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 2);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -305,12 +314,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[2]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_3){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=3;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 3);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -318,12 +328,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[3]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_4){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=4;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 4);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -331,12 +342,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[4]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_5){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=5;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 5);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -344,12 +356,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[5]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_6){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=6;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 6);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -357,12 +370,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[6]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_7){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=7;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 7);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -370,12 +384,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[7]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_8){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=8;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 8);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -383,12 +398,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[8]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_9){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=9;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 9);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -396,12 +412,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[9]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_10){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=10;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 10);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -409,12 +426,13 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[10]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource() == btnNewButton_11){
-				if(chckbxGuardarEstacion.isEnabled()){
+				posicionFavorita=11;
+				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 11);
 				}else{
 					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
@@ -422,20 +440,56 @@ public class Interfaz {
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
 						radio.setEmisora(radio.getEmiFM()[11]);
-						lblAm.setText((radio.getEmisora())+"FM");
+						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
 				
 			}else if(a.getSource()==btnAnterior){
 				radio.atrasarEmisora();
-				lblAm.setText(radio.getEmisora()+frecuencia);
+				if(frecuencia.equals("AM")){
+					lblAm.setText((int)(radio.getEmisora())+frecuencia);
+				}else{
+					lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+frecuencia);
+				}
 			}else if(a.getSource()==btnSiguiente){
 				radio.adelantarEmisora();
-				lblAm.setText(radio.getEmisora()+frecuencia);
+				if(frecuencia.equals("AM")){
+					lblAm.setText((int)(radio.getEmisora())+frecuencia);
+				}else{
+					lblAm.setText((new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue())+frecuencia);
+				}
 			}else if(a.getSource()==btnSubir){
-				
+				radio.subirVolumen();
+				lblVolumen.setText("Volumen:"+radio.getVolumen());
 			}else if(a.getSource()==btnBajar){
-				
+				radio.bajarVolumen();
+				lblVolumen.setText("Volumen:"+radio.getVolumen());
+			}else if(a.getSource()==forward){
+				if(posicionFavorita ==11){
+					posicionFavorita=0;
+				}else{
+					posicionFavorita++;
+				}
+				if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
+					radio.setEmisora(radio.getEmiAM()[posicionFavorita]);
+					lblAm.setText((int)(radio.getEmisora())+"AM");
+				}else{ //Cargando emisora de FM
+					radio.setEmisora(radio.getEmiFM()[posicionFavorita]);
+					lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
+				}
+			}else if(a.getSource()==backward){
+				if(posicionFavorita ==0){
+					posicionFavorita=11;
+				}else{
+					posicionFavorita--;
+				}
+				if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
+					radio.setEmisora(radio.getEmiAM()[posicionFavorita]);
+					lblAm.setText((int)(radio.getEmisora())+"AM");
+				}else{ //Cargando emisora de FM
+					radio.setEmisora(radio.getEmiFM()[posicionFavorita]);
+					lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
+				}
 			}
 			
 		}

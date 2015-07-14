@@ -1,8 +1,8 @@
 public class Radio implements InterfazRadio{
 	int frecuencia; //1 es AM, 0 es FM
 	double emisora;
-	double[] EmiAM = new double[12];
-	double[] EmiFM = new double[12];
+	double[] EmiAM = {MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM};
+	double[] EmiFM = {MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM};
 	int Volumen;
 	boolean Encendido;
 	
@@ -10,6 +10,8 @@ public class Radio implements InterfazRadio{
 			Encendido = false;
 			emisora = MIN_AM;
 			frecuencia = 1;
+			Volumen=50;
+			
 	}
 	
 	public void encenderApagar(){

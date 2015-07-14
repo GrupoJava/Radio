@@ -22,10 +22,13 @@ public class Radio implements InterfazRadio{
 	
 	public void cambiarFrec(){
 	
-		if (frecuencia != 0)
+		if (frecuencia != 0){
 			frecuencia= 0;
-		else
+			emisora= MIN_FM;
+		}else{
 			frecuencia=1;
+			emisora=MIN_AM;
+		}
 	
 	}
 	

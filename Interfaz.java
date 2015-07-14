@@ -14,6 +14,7 @@ import javax.swing.JCheckBox;
 
 public class Interfaz {
 	private JFrame frame;
+	private String frecuencia = "AM";
 	private Radio radio = new Radio();
 	private JButton btnOffon;
 	private JButton btnAmfm;
@@ -261,6 +262,15 @@ public class Interfaz {
 				}
 			}else if(a.getSource() == btnAmfm){
 				radio.cambiarFrec();
+				if(radio.getFrecuencia()==1){
+					frecuencia = "AM";
+					lblAm.setText(radio.MIN_AM+frecuencia);
+					
+				}else {
+					frecuencia = "FM";
+					lblAm.setText(radio.MIN_FM+frecuencia);
+					
+				}
 			}else if(a.getSource() == btnNewButton){
 				if(chckbxGuardarEstacion.isEnabled()){
 					radio.guardarEmisora(radio.getEmisora(), 0);
@@ -403,19 +413,31 @@ public class Interfaz {
 					}
 				}
 				
-			}else if(a.getSource() == btnNewButton_11){if(chckbxGuardarEstacion.isEnabled()){
-				radio.guardarEmisora(radio.getEmisora(), 11);
-			}else{
-				if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-					radio.setEmisora(radio.getEmiAM()[11]);
-					lblAm.setText((int)(radio.getEmisora())+"AM");
-				}else{ //Cargando emisora de FM
-					radio.setEmisora(radio.getEmiFM()[11]);
-					lblAm.setText((radio.getEmisora())+"FM");
+			}else if(a.getSource() == btnNewButton_11){
+				if(chckbxGuardarEstacion.isEnabled()){
+					radio.guardarEmisora(radio.getEmisora(), 11);
+				}else{
+					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
+						radio.setEmisora(radio.getEmiAM()[11]);
+						lblAm.setText((int)(radio.getEmisora())+"AM");
+					}else{ //Cargando emisora de FM
+						radio.setEmisora(radio.getEmiFM()[11]);
+						lblAm.setText((radio.getEmisora())+"FM");
+					}
 				}
-			}
+				
+			}else if(a.getSource()==btnAnterior){
+				radio.atrasarEmisora();
+				lblAm.setText(radio.getEmisora()+frecuencia);
+			}else if(a.getSource()==btnSiguiente){
+				radio.adelantarEmisora();
+				lblAm.setText(radio.getEmisora()+frecuencia);
+			}else if(a.getSource()==btnSubir){
+				
+			}else if(a.getSource()==btnBajar){
 				
 			}
+			
 		}
 		
 		

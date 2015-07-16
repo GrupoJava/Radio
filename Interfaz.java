@@ -15,6 +15,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JCheckBox;
 
+/**
+ * @author 
+ *
+ */
 public class Interfaz {
 	private JFrame frame;
 	private String frecuencia = "AM";
@@ -44,8 +48,14 @@ public class Interfaz {
 	private JLabel lblVolumen;
 	private JLabel lblAm;
 	private JLabel lblRadioApagada;
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			/* (non-Javadoc)
+			 * @see java.lang.Runnable#run()
+			 */
 			public void run() {
 				try {
 					Interfaz window = new Interfaz();
@@ -57,9 +67,15 @@ public class Interfaz {
 		});
 	}
 	
+	/**
+	 * 
+	 */
 	public Interfaz(){
 		initialize();
 	}
+	/**
+	 * 
+	 */
 	public void initialize(){
 		frame = new JFrame();
 		frame.setBounds(100, 100, 671, 379);
@@ -212,11 +228,13 @@ public class Interfaz {
 	}
 	private class Evento implements ActionListener{
 
+		/* (non-Javadoc)
+		 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+		 */
 		public void actionPerformed(ActionEvent a) {
 			if(a.getSource()== btnOffon){
 				radio.encenderApagar();
-				if(!radio.isEncendido()){
-					radio.setVolumen(50);
+				if(!radio.getEncendido()){
 					lblRadioApagada.setText("Radio Agapada");
 					lblAm.setText("Emisora");
 					lblVolumen.setText("Volumen: ---");
@@ -241,10 +259,8 @@ public class Interfaz {
 					  btnBajar.setEnabled(false);
 					  chckbxGuardarEstacion.setEnabled(false);
 				}else{
-					radio.setVolumen(50);
 					lblRadioApagada.setText("Radio Encendida");
 					lblAm.setText((int)radio.getEmisora()+"AM");
-					lblVolumen.setText("Volumen: 50");
 					btnAmfm.setEnabled(true);
 					  btnNewButton.setEnabled(true);
 					  btnNewButton_1.setEnabled(true);
@@ -268,7 +284,7 @@ public class Interfaz {
 				}
 			}else if(a.getSource() == btnAmfm){
 				radio.cambiarFrec();
-				if(radio.getFrecuencia()==1){
+				if(radio.getFrec().equals("AM")){
 					frecuencia = "AM";
 					lblAm.setText(radio.MIN_AM+frecuencia);
 					
@@ -282,11 +298,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 0);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[0]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(0);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[0]);
+						radio.cargarEmisora(0);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -295,11 +311,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 1);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[1]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(1);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[1]);
+						radio.cargarEmisora(1);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -309,11 +325,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 2);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[2]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(2);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[2]);
+						radio.cargarEmisora(2);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -323,11 +339,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 3);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[3]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(3);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[3]);
+						radio.cargarEmisora(3);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -337,11 +353,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 4);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[4]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(4);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[4]);
+						radio.cargarEmisora(4);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -351,11 +367,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 5);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[5]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(5);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[5]);
+						radio.cargarEmisora(5);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -365,11 +381,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 6);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[6]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(6);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[6]);
+						radio.cargarEmisora(6);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -379,11 +395,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 7);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[7]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(7);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[7]);
+						radio.cargarEmisora(7);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -393,11 +409,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 8);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[8]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(8);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[8]);
+						radio.cargarEmisora(8);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -407,11 +423,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 9);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[9]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(9);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[9]);
+						radio.cargarEmisora(9);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -421,11 +437,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 10);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[10]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(10);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[10]);
+						radio.cargarEmisora(10);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -435,11 +451,11 @@ public class Interfaz {
 				if(chckbxGuardarEstacion.isSelected()){
 					radio.guardarEmisora(radio.getEmisora(), 11);
 				}else{
-					if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-						radio.setEmisora(radio.getEmiAM()[11]);
+					if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+						radio.cargarEmisora(11);
 						lblAm.setText((int)(radio.getEmisora())+"AM");
 					}else{ //Cargando emisora de FM
-						radio.setEmisora(radio.getEmiFM()[11]);
+						radio.cargarEmisora(11);
 						lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 					}
 				}
@@ -470,11 +486,11 @@ public class Interfaz {
 				}else{
 					posicionFavorita++;
 				}
-				if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-					radio.setEmisora(radio.getEmiAM()[posicionFavorita]);
+				if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+					radio.cargarEmisora(posicionFavorita);
 					lblAm.setText((int)(radio.getEmisora())+"AM");
 				}else{ //Cargando emisora de FM
-					radio.setEmisora(radio.getEmiFM()[posicionFavorita]);
+					radio.cargarEmisora(posicionFavorita);
 					lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 				}
 			}else if(a.getSource()==backward){
@@ -483,18 +499,15 @@ public class Interfaz {
 				}else{
 					posicionFavorita--;
 				}
-				if(radio.getFrecuencia() == 1){ //Cargando emisora de AM
-					radio.setEmisora(radio.getEmiAM()[posicionFavorita]);
+				if(radio.getFrec().equals("AM")){ //Cargando emisora de AM
+					radio.cargarEmisora(posicionFavorita);
 					lblAm.setText((int)(radio.getEmisora())+"AM");
 				}else{ //Cargando emisora de FM
-					radio.setEmisora(radio.getEmiFM()[posicionFavorita]);
+					radio.cargarEmisora(posicionFavorita);
 					lblAm.setText(new BigDecimal(radio.getEmisora() ).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue()+"FM");
 				}
 			}
 			
 		}
-		
-		
-		
 	}
 }

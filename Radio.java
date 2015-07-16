@@ -1,5 +1,5 @@
 public class Radio implements InterfazRadio{
-	int frecuencia; //1 es AM, 0 es FM
+	String frecuencia; //1 es AM, 0 es FM
 	double emisora;
 	double[] EmiAM = {MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM,MIN_AM};
 	double[] EmiFM = {MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM,MIN_FM};
@@ -9,7 +9,7 @@ public class Radio implements InterfazRadio{
 	public Radio(){
 			Encendido = false;
 			emisora = MIN_AM;
-			frecuencia = 1;
+			frecuencia = "AM";
 			Volumen=50;
 			
 	}
@@ -24,23 +24,19 @@ public class Radio implements InterfazRadio{
 	
 	public void cambiarFrec(){
 	
-		if (frecuencia != 0){
-			frecuencia= 0;
+		if (frecuencia.equals("AM")){
+			frecuencia= "FM";
 			emisora= MIN_FM;
 		}else{
-			frecuencia=1;
+			frecuencia="AM";
 			emisora=MIN_AM;
 		}
 	
 	}
-	
-	public void cargarEmisora(double emisora){
-		
-	}
 
 	public void adelantarEmisora(){
 		//Cambio de emisora AM
-		if (frecuencia == 1){
+		if (frecuencia.equals("AM")){
 			if (emisora == MAX_AM)
 				emisora = MIN_AM;
 			else
@@ -57,7 +53,7 @@ public class Radio implements InterfazRadio{
 	}
 	
 	public void atrasarEmisora(){
-		if (frecuencia == 1){
+		if (frecuencia.equals("AM")){
 			if (emisora == MIN_AM)
 				emisora = MAX_AM;
 			else
@@ -73,7 +69,7 @@ public class Radio implements InterfazRadio{
 	}
 	
 	public void guardarEmisora(double emisora, int posicion){
-		if (frecuencia == 1){
+		if (frecuencia.equals("AM")){
 			EmiAM[posicion] = emisora;
 		}
 		else
@@ -88,52 +84,37 @@ public class Radio implements InterfazRadio{
 		Volumen = Volumen - 1;
 	}
 
-	public int getFrecuencia() {
-		return frecuencia;
+	@Override
+	public void cargarEmisora(int posicion) {
+		if(frecuencia.equals("AM")){
+			emisora= EmiAM[posicion];
+		}else{
+			emisora= EmiFM[posicion];
+		}
+			
 	}
 
-	public void setFrecuencia(int frecuencia) {
-		this.frecuencia = frecuencia;
-	}
-
+	@Override
 	public double getEmisora() {
 		return emisora;
 	}
 
-	public void setEmisora(double emisora) {
-		this.emisora = emisora;
-	}
-
-	public double[] getEmiAM() {
-		return EmiAM;
-	}
-
-	public void setEmiAM(double[] emiAM) {
-		EmiAM = emiAM;
-	}
-
-	public double[] getEmiFM() {
-		return EmiFM;
-	}
-
-	public void setEmiFM(double[] emiFM) {
-		EmiFM = emiFM;
-	}
-
-	public int getVolumen() {
-		return Volumen;
-	}
-
-	public void setVolumen(int volumen) {
-		Volumen = volumen;
-	}
-
-	public boolean isEncendido() {
+	@Override
+	public boolean getEncendido() {
 		return Encendido;
 	}
 
-	public void setEncendido(boolean encendido) {
-		Encendido = encendido;
+
+	@Override
+	public int getVolumen() {
+		// TODO Auto-generated method stub
+		return Volumen;
 	}
-	
+
+	@Override
+	public String getFrec() {
+		return frecuencia;
+	}
+
+
 }

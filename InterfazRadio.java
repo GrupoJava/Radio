@@ -1,7 +1,10 @@
 /**
- * @author Julio Gonzalez, Diego Morales, Diego Sosa
+ * @author Seccion 10 de Estructura de Datos
  * @version 2.0
  */
+
+//Ultima revision de la interfaz por Julio Gonzalez, Diego Morales y Diego Sosa
+//Fin de la Clase: Interfaz que se acordo utilizar en clase y se puso a disposicion por medio de Facebook
 public interface InterfazRadio {
 	/**
 	 * constante que permite el cambio de frecuencia en AM
@@ -73,23 +76,29 @@ public interface InterfazRadio {
 	 */
 	public void bajarVolumen();
 
-	/* NEW 
-	getEncendido *
-	getFrecuencia *
-	getEmisora *
-	toString *
-	cargarEmisora -> double to int *
-	*/
-
-	//Retorna la emisora actual seleccionada (dependiendo si es AM o FM)
+	/**
+	 * @return la emisora actual
+	 */
 	public double getEmisora();
-	//Retorna el estado actual de Encendido (true=encendido, false=apagado)
+	
+	/**
+	 * @return si el radio se encuentra encendido
+	 */
 	public boolean getEncendido();
-	//Retorna la frecuencia actual AM o FM
+	
+    /**
+     * @return la frecuencia, AM o FM
+     */
     public String getFrec();
 
+    /**
+     * @return Volumen
+     */
     public int getVolumen();
     
+    /**
+     * @return Informacion del objeto
+     */
     public String toString();
 
 }

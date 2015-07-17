@@ -1,3 +1,9 @@
+/**
+ * @author Rudy Garrido 14366, Yosemite Melendez 14, Delbert Custodio 14246
+ * Esta clase es la encargada de implementar a la InterfazRadio que se acordo en clase
+ */
+
+//Seccion 10 de Estructura de Datos
 public class Radio implements InterfazRadio{
 	String frecuencia; //1 es AM, 0 es FM
 	double emisora;
@@ -6,6 +12,10 @@ public class Radio implements InterfazRadio{
 	int Volumen;
 	boolean Encendido;
 	
+
+	/**
+	 * 
+	 */
 	public Radio(){
 			Encendido = false;
 			emisora = MIN_AM;
@@ -14,6 +24,9 @@ public class Radio implements InterfazRadio{
 			
 	}
 	
+	/* (non-Javadoc)
+	 * @see InterfazRadio#encenderApagar()
+	 */
 	public void encenderApagar(){
 		if(Encendido){
 			Encendido = false;
@@ -22,6 +35,9 @@ public class Radio implements InterfazRadio{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see InterfazRadio#cambiarFrec()
+	 */
 	public void cambiarFrec(){
 	
 		if (frecuencia.equals("AM")){
@@ -34,6 +50,9 @@ public class Radio implements InterfazRadio{
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see InterfazRadio#adelantarEmisora()
+	 */
 	public void adelantarEmisora(){
 		//Cambio de emisora AM
 		if (frecuencia.equals("AM")){
@@ -52,6 +71,9 @@ public class Radio implements InterfazRadio{
 			
 	}
 	
+	/* (non-Javadoc)
+	 * @see InterfazRadio#atrasarEmisora()
+	 */
 	public void atrasarEmisora(){
 		if (frecuencia.equals("AM")){
 			if (emisora == MIN_AM)
@@ -68,6 +90,9 @@ public class Radio implements InterfazRadio{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see InterfazRadio#guardarEmisora(double, int)
+	 */
 	public void guardarEmisora(double emisora, int posicion){
 		if (frecuencia.equals("AM")){
 			EmiAM[posicion] = emisora;
@@ -76,14 +101,23 @@ public class Radio implements InterfazRadio{
 			EmiFM[posicion] = emisora;
 	}
 	
+	/* (non-Javadoc)
+	 * @see InterfazRadio#subirVolumen()
+	 */
 	public void subirVolumen(){
 		Volumen = Volumen + 1;
 	}
 	
+	/* (non-Javadoc)
+	 * @see InterfazRadio#bajarVolumen()
+	 */
 	public void bajarVolumen(){
 		Volumen = Volumen - 1;
 	}
 
+	/* (non-Javadoc)
+	 * @see InterfazRadio#cargarEmisora(int)
+	 */
 	@Override
 	public void cargarEmisora(int posicion) {
 		if(frecuencia.equals("AM")){
@@ -94,23 +128,35 @@ public class Radio implements InterfazRadio{
 			
 	}
 
+	/* (non-Javadoc)
+	 * @see InterfazRadio#getEmisora()
+	 */
 	@Override
 	public double getEmisora() {
 		return emisora;
 	}
 
+	/* (non-Javadoc)
+	 * @see InterfazRadio#getEncendido()
+	 */
 	@Override
 	public boolean getEncendido() {
 		return Encendido;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see InterfazRadio#getVolumen()
+	 */
 	@Override
 	public int getVolumen() {
 		// TODO Auto-generated method stub
 		return Volumen;
 	}
 
+	/* (non-Javadoc)
+	 * @see InterfazRadio#getFrec()
+	 */
 	@Override
 	public String getFrec() {
 		return frecuencia;

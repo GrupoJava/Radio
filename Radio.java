@@ -1,5 +1,5 @@
 /**
- * @author Rudy Garrido 14366, Yosemite Melendez 14, Delbert Custodio 14246
+ * @author Rudy Garrido 14366, Yosemite Melendez 14413, Delbert Custodio 14246
  * Esta clase es la encargada de implementar a la InterfazRadio que se acordo en clase
  */
 

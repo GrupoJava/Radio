@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JCheckBox;
 
 /**
- * @author Rudy Garrido 14366, Yosemite Melendez 14, Delbert Custodio 14246 
+ * @author Rudy Garrido 14366, Yosemite Melendez 14413, Delbert Custodio 14246 
  * Clase que contiene al Main y GUI correspondientes
  */
 public class Interfaz {
